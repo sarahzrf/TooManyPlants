@@ -9,7 +9,6 @@ import net.minecraft.src.World;
 
 public class BlockAirFlower extends BlockFlower2
 {
-
 	protected BlockAirFlower(int i, int j)
 	{
 		super(i, j);

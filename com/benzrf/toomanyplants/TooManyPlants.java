@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 
+import com.benzrf.toomanyplants.proxy.CommonProxy;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.TextureFXManager;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -48,12 +50,24 @@ import net.minecraftforge.common.Configuration;
 (
 	modid = "toomanyplants",
 	name="TooManyPlants",
-	version="1.2"
+	version="1.2.0"
+)
+@NetworkMod
+(
+	serverSideRequired = false,
+	clientSideRequired = true,
+	versionBounds = "[1.2]"
 )
 public class TooManyPlants
 {
+	@SidedProxy
+	(
+		serverSide = "com.benzrf.toomanyplants.proxy.CommonProxy",
+		clientSide = "com.benzrf.toomanyplants.proxy.ClientProxy"
+	)
+	public static CommonProxy proxy;
 	public static TMPObjectsImplementation objs;
-	IWorldGenerator worldgen;
+	public static IWorldGenerator worldgen;
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
@@ -70,13 +84,8 @@ public class TooManyPlants
 	@Init
 	public void init(FMLInitializationEvent event)
 	{
-		if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
-		{
-			MinecraftForgeClient.preloadTexture("/com/benzrf/toomanyplants/resources/plantssheet.png");
-			FMLClientHandler.instance().getClient().renderEngine.registerTextureFX(new TextureDawnFlowerFX(objs.blockdawnflower.blockIndexInTexture, Minecraft.getMinecraft()));
-		}
 		objs.init();
-		
+		proxy.registerClientJunk();
 		GameRegistry.registerWorldGenerator(worldgen);
 	}	
 }
