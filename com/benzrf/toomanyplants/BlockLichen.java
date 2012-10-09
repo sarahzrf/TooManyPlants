@@ -53,7 +53,7 @@ public class BlockLichen extends BlockFlower2
 	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int i)
 	{
-		return i == Block.stone.blockID;
+		return i == Block.stone.blockID || i == Block.cobblestone.blockID || i == Block.cobblestoneMossy.blockID;
 	}
 	
 	@Override

@@ -17,6 +17,8 @@ public class WorldGenTMP implements IWorldGenerator
 	@Override
 	public void generate(Random random, int x, int z, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
+		gen.replace = 0;
+		
 		x *= 16;
 		z *= 16;
 		
@@ -41,7 +43,7 @@ public class WorldGenTMP implements IWorldGenerator
 			gen.generate(world, random, x + 8, random.nextInt(255), z + 8);
 		}
 		
-		if ((world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taiga) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.icePlains)) && !world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.iceMountains) && !world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taigaHills))
+		if (!world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.iceMountains) && !world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taigaHills))
 		{
 			gen.plantBlockId = TooManyPlants.objs.blockdawnflower.blockID;
 			gen.limit = 1;
@@ -51,7 +53,7 @@ public class WorldGenTMP implements IWorldGenerator
 			}
 		}
 		
-		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.iceMountains) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taigaHills) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.icePlains))
+		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.iceMountains) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taigaHills) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.taigaHills))
 		{
 			gen.plantBlockId = TooManyPlants.objs.blocklotus.blockID;
 			gen.limit = 1;
@@ -99,10 +101,7 @@ public class WorldGenTMP implements IWorldGenerator
 		{
 			gen.plantBlockId = TooManyPlants.objs.blockfireflower.blockID;
 			gen.limit = 3;
-			for (int i = 0; i <= 2; i++)
-			{
-				gen.generate(world, random, x + 8, random.nextInt(255), z + 8);
-			}
+			gen.generate(world, random, x + 8, random.nextInt(255), z + 8);
 		}
 		
 		gen.plantBlockId = TooManyPlants.objs.blockairflower.blockID;
@@ -128,7 +127,7 @@ public class WorldGenTMP implements IWorldGenerator
 				gen.generate(world, random, x + 8, random.nextInt(170), z + 8);
 			}
 		}
-				
+		
 		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.jungle) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.jungleHills))
 		{
 			gen.plantBlockId = TooManyPlants.objs.blockcreepara.blockID;

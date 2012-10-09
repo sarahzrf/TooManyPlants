@@ -87,5 +87,5 @@ public class TooManyPlants
 		objs.init();
 		proxy.registerClientJunk();
 		GameRegistry.registerWorldGenerator(worldgen);
-	}	
+	}
 }
