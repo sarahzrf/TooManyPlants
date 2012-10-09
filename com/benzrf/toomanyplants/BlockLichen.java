@@ -8,11 +8,11 @@ import net.minecraft.src.BlockFlower;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 
-public class BlockLichen extends BlockFlower
+public class BlockLichen extends BlockFlower2
 {
 	protected BlockLichen(int i, int j)
 	{
-		super(i, j, Material.plants);
+		super(i, j);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
 		setTickRandomly(true);
 		Block.setBurnProperties(blockID, 1000, 1000);
@@ -53,18 +53,12 @@ public class BlockLichen extends BlockFlower
 	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int i)
 	{
-		return i != 0 && Block.blocksList[i].blockMaterial.equals(Material.rock);
+		return i == Block.stone.blockID;
 	}
 	
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
 		return TooManyPlants.objs.itemlichen.shiftedIndex;
-	}
-	
-	@Override
-	public String getTextureFile()
-	{
-		return "/com/benzrf/toomanyplants/resources/plantssheet.png";
 	}
 }

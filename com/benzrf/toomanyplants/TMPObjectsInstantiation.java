@@ -23,7 +23,7 @@ import net.minecraft.src.PotionEffect;
 import net.minecraft.src.World;
 import net.minecraftforge.common.Configuration;
 
-public class TMPObjectsImplementation extends TMPObjectsDeclaration
+public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 {	
 	public void preInit(Configuration c)
 	{
@@ -328,7 +328,7 @@ public class TMPObjectsImplementation extends TMPObjectsDeclaration
 	
 	void initDawnFlower(Configuration c)
 	{
-		dawnflowerTexture = 27;
+		dawnflowerTexture = 39;
 		dawnflowerId = c.getOrCreateIntProperty("dawnflowerId", "ids", 1241).getInt();
 		blockdawnflower = new BlockDawnflower(dawnflowerId, dawnflowerTexture).setBlockName("Dawnflower");
 	}

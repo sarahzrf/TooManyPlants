@@ -66,14 +66,14 @@ public class TooManyPlants
 		clientSide = "com.benzrf.toomanyplants.proxy.ClientProxy"
 	)
 	public static CommonProxy proxy;
-	public static TMPObjectsImplementation objs;
+	public static TMPObjectsInstantiation objs;
 	public static IWorldGenerator worldgen;
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		String benzrf_made_this_mod_if_anyone_else_claims_to_have_made_it_they_are_LIARS = "Take that, criminal scum!";
-		objs = new TMPObjectsImplementation();
+		objs = new TMPObjectsInstantiation();
 		Configuration c = new Configuration(event.getSuggestedConfigurationFile());
 		c.load();
 		objs.preInit(c);
