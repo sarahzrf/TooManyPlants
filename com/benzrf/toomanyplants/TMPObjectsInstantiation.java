@@ -47,7 +47,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	void initGlowFlower(Configuration c)
 	{
 		glowTexture = 0;
-		preGlowFlowerId = c.getOrCreateIntProperty("preGlowFlowerId", "ids", 1255).getInt();
+		preGlowFlowerId = c.get("preGlowFlowerId", "ids", 1255).getInt();
 		blockpreglowflower = new BlockFlower2(preGlowFlowerId, glowTexture) {
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -55,7 +55,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 				return glowFlowerId;
 			}
 		}.setBlockName("Non-Glowing Glow Flower");
-		glowFlowerId = c.getOrCreateIntProperty("glowFlowerId", "ids", 1254).getInt();
+		glowFlowerId = c.get("glowFlowerId", "ids", 1254).getInt();
 		blockglowflower = new BlockFlower2(glowFlowerId, glowTexture){
 			@Override
 			public boolean canBlockStay(World world, int i, int j, int k)
@@ -68,35 +68,35 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	void initEvilFlower(Configuration c)
 	{
 		evilFlowerTexture = 1;
-		evilFlowerId = c.getOrCreateIntProperty("evilFlowerId", "ids", 1253).getInt();
+		evilFlowerId = c.get("evilFlowerId", "ids", 1253).getInt();
 		blockevilflower = new BlockEvilFlower(evilFlowerId, evilFlowerTexture).setBlockName("Evil Flower");
 		evilFlowerPetalTexture = 2;
-		evilFlowerPetalId = c.getOrCreateIntProperty("evilFlowerPetalId", "ids", 413).getInt();
+		evilFlowerPetalId = c.get("evilFlowerPetalId", "ids", 413).getInt();
 		itemevilflowerpetal = new Item(evilFlowerPetalId){
 			@Override
 			public String getTextureFile()
 			{
 				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
 			}
-		}.setIconIndex(evilFlowerPetalTexture).setItemName("Evil Flower Petal").setTabToDisplayOn(CreativeTabs.tabMaterials);
+		}.setIconIndex(evilFlowerPetalTexture).setItemName("Evil Flower Petal").setCreativeTab(CreativeTabs.tabMaterials);
 		animationEssenceTexture = 3;
-		animationEssenceId = c.getOrCreateIntProperty("animationEssenceId", "ids", 612).getInt();
+		animationEssenceId = c.get("animationEssenceId", "ids", 612).getInt();
 		itemanimationessence = new Item(animationEssenceId){
 			@Override
 			public String getTextureFile()
 			{
 				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
 			}
-		}.setIconIndex(animationEssenceTexture).setItemName("Magic Powder").setTabToDisplayOn(CreativeTabs.tabMaterials);
+		}.setIconIndex(animationEssenceTexture).setItemName("Magic Powder").setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
 	void initAirFlower(Configuration c)
 	{
 		airFlowerTexture = 4;
-		airFlowerId = c.getOrCreateIntProperty("airFlowerId", "ids", 1252).getInt();
+		airFlowerId = c.get("airFlowerId", "ids", 1252).getInt();
 		blockairflower = new BlockAirFlower(airFlowerId, airFlowerTexture).setBlockName("Air Flower");
 		rainstickTexture = 5;
-		rainstickId = c.getOrCreateIntProperty("rainstickId", "ids", 6875).getInt();
+		rainstickId = c.get("rainstickId", "ids", 6875).getInt();
 		itemrainstick = new Item(rainstickId){
 			{
 				setMaxStackSize(1);
@@ -126,21 +126,21 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			{
 				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
 			}
-		}.setIconIndex(rainstickTexture).setItemName("Rainstick").setTabToDisplayOn(CreativeTabs.tabTools);
+		}.setIconIndex(rainstickTexture).setItemName("Rainstick").setCreativeTab(CreativeTabs.tabTools);
 	}
 	
 	void initBeanstalk(Configuration c)
 	{
 		beanstalkTexture = 6;
-		beanstalkId = c.getOrCreateIntProperty("beanstalkId", "ids", 1251).getInt();
+		beanstalkId = c.get("beanstalkId", "ids", 1251).getInt();
 		blockbeanstalk = new BlockBeanstalk(beanstalkId, beanstalkTexture).setHardness(0.5F);
 		magicBeanTexture = 7;
-		magicBeanId = c.getOrCreateIntProperty("magicBeanId", "ids", 1230).getInt();
+		magicBeanId = c.get("magicBeanId", "ids", 1230).getInt();
 		itemmagicbean = new ItemSeeds(magicBeanId, blockbeanstalk.blockID, Block.dirt.blockID){
 			@Override
-			public boolean tryPlaceIntoWorld(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
+			public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
 			{
-				boolean toReturn = super.tryPlaceIntoWorld(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
+				boolean toReturn = super.onItemUse(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
 				if (toReturn)
 				{
 					world.setBlockMetadata(i, j + 1, k, 1);
@@ -155,12 +155,12 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setIconIndex(magicBeanTexture).setItemName("Magic Bean");
 		lesserMagicBeanTexture = 8;
-		lesserMagicBeanId = c.getOrCreateIntProperty("lesserMagicBeanId", "ids", 975).getInt();
+		lesserMagicBeanId = c.get("lesserMagicBeanId", "ids", 975).getInt();
 		itemlessermagicbean = new ItemSeeds(lesserMagicBeanId, blockbeanstalk.blockID, Block.dirt.blockID){
 			@Override
-			public boolean tryPlaceIntoWorld(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
+			public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
 			{
-				boolean toReturn = super.tryPlaceIntoWorld(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
+				boolean toReturn = super.onItemUse(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
 				if (toReturn)
 				{
 					((BlockBeanstalk) blockbeanstalk).grow(world, i, j + 1, k);
@@ -174,14 +174,14 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setIconIndex(lesserMagicBeanTexture).setItemName("Lesser Magic Bean");
 		podTexture = 9;
-		podId = c.getOrCreateIntProperty("podId", "ids", 1250).getInt();
+		podId = c.get("podId", "ids", 1250).getInt();
 		blockpod = new BlockPod(podId, podTexture);
 	}
 	
 	void initBeanPlant(Configuration c)
 	{
 		beanPlantTexture = 10;
-		beanPlantId = c.getOrCreateIntProperty("beanPlantId", "ids", 1249).getInt();
+		beanPlantId = c.get("beanPlantId", "ids", 1249).getInt();
 		blockbeanplant = new BlockFlower2(beanPlantId, beanPlantTexture){
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -195,10 +195,10 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Bean Plant");
 		beanSproutTexture = 11;
-		beanSproutId = c.getOrCreateIntProperty("beanSproutId", "ids", 1248).getInt();
+		beanSproutId = c.get("beanSproutId", "ids", 1248).getInt();
 		blockbeansprout = new BlockBeanSprout(beanSproutId, beanSproutTexture).setBlockName("Bean Sprout");
 		beanTexture = 12;
-		beanId = c.getOrCreateIntProperty("beanId", "ids", 142).getInt();
+		beanId = c.get("beanId", "ids", 142).getInt();
 		itembean = new ItemSeeds(beanId, blockbeansprout.blockID, Block.dirt.blockID){
 			@Override
 			public String getTextureFile()
@@ -207,7 +207,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setIconIndex(beanTexture).setItemName("Bean");
 		beanStewTexture = 13;
-		beanStewId = c.getOrCreateIntProperty("beanStewId", "ids", 4444).getInt();
+		beanStewId = c.get("beanStewId", "ids", 4444).getInt();
 		itembeanstew = new ItemSoup(beanStewId, 20){
 			@Override
 			public ItemStack onFoodEaten(ItemStack itemstack, World world, EntityPlayer entityplayer)
@@ -226,7 +226,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	void initPitcherPlant(Configuration c)
 	{
 		pitcherPlantTexture = 14;
-		pitcherPlantId = c.getOrCreateIntProperty("pitcherPlantId", "ids", 1247).getInt();
+		pitcherPlantId = c.get("pitcherPlantId", "ids", 1247).getInt();
 		blockpitcherplant = new BlockFlower2(pitcherPlantId, pitcherPlantTexture){
 			@Override
 			public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int l, float i2, float j2, float k2)
@@ -264,10 +264,10 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		bonefingerTexture1 = 15;
 		bonefingerTexture2 = 16;
 		bonefingerTexture3 = 17;
-		bonefingerId = c.getOrCreateIntProperty("bonefingerId", "ids", 1246).getInt();
+		bonefingerId = c.get("bonefingerId", "ids", 1246).getInt();
 		blockbonefinger = new BlockBoneFinger(bonefingerId, bonefingerTexture1, bonefingerTexture2, bonefingerTexture3).setBlockName("Bonefinger");
 		boneseedTexture = 18;
-		boneseedId = c.getOrCreateIntProperty("boneseedId", "ids", 777).getInt();
+		boneseedId = c.get("boneseedId", "ids", 777).getInt();
 		itemboneseed = new ItemSeeds(boneseedId, bonefingerId, Block.netherrack.blockID){
 			@Override
 			public String getTextureFile()
@@ -280,35 +280,35 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	void initLichen(Configuration c)
 	{
 		lichenBlockTexture = 19;
-		lichenId = c.getOrCreateIntProperty("lichenId", "ids", 1245).getInt();
+		lichenId = c.get("lichenId", "ids", 1245).getInt();
 		blocklichen = new BlockLichen(lichenId, lichenBlockTexture).setBlockName("Lichen");
 		lichenItemTexture = 20;
-		lichenItemId = c.getOrCreateIntProperty("lichenItemId", "ids", 314).getInt();
+		lichenItemId = c.get("lichenItemId", "ids", 314).getInt();
 		itemlichen = new ItemTMPSeeds(lichenItemId, blocklichen).setIconIndex(lichenItemTexture).setItemName("Lichen");
 		roastedLichenTexture = 21;
-		roastedLichenId = c.getOrCreateIntProperty("roastedLichenId", "ids", 4130).getInt();
-		itemroastedlichen = new ItemRoastedLichen(roastedLichenId).setIconIndex(roastedLichenTexture).setItemName("Roasted Lichen").setTabToDisplayOn(CreativeTabs.tabFood);
+		roastedLichenId = c.get("roastedLichenId", "ids", 4130).getInt();
+		itemroastedlichen = new ItemRoastedLichen(roastedLichenId).setIconIndex(roastedLichenTexture).setItemName("Roasted Lichen").setCreativeTab(CreativeTabs.tabFood);
 	}
 	
 	void initCreepara(Configuration c)
 	{
 		creeparaTBTexture = 22;
 		creeparaSideTexture = 23;
-		creeparaId = c.getOrCreateIntProperty("creeparaId", "ids", 1244).getInt();
-		blockcreepara = new BlockCreepara(creeparaId, creeparaTBTexture, creeparaSideTexture).setBlockName("Creepara").setHardness(0.2F).setCreativeTab(CreativeTabs.tabDeco);
+		creeparaId = c.get("creeparaId", "ids", 1244).getInt();
+		blockcreepara = new BlockCreepara(creeparaId, creeparaTBTexture, creeparaSideTexture).setBlockName("Creepara").setHardness(0.2F).setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	void initPricklyPear(Configuration c)
 	{
 		pricklyPearTexture = 24;
-		pricklyPearId = c.getOrCreateIntProperty("pricklyPearId", "ids", 1243).getInt();
-		blockpricklypear = new BlockPricklyPear(pricklyPearId, pricklyPearTexture, Material.cactus).setBlockName("Prickly Pear").setHardness(0.4F).setCreativeTab(CreativeTabs.tabDeco);
+		pricklyPearId = c.get("pricklyPearId", "ids", 1243).getInt();
+		blockpricklypear = new BlockPricklyPear(pricklyPearId, pricklyPearTexture, Material.cactus).setBlockName("Prickly Pear").setHardness(0.4F).setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	void initFireFlower(Configuration c)
 	{
 		fireflowerTexture = 25;
-		fireflowerId = c.getOrCreateIntProperty("fireflowerId", "ids", 1242).getInt();
+		fireflowerId = c.get("fireflowerId", "ids", 1242).getInt();
 		blockfireflower = new BlockFlower2(fireflowerId, fireflowerTexture) {
 			@Override
 			public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
@@ -322,21 +322,21 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Fire Flower");
 		fireLauncherTexture = 26;
-		fireLauncherId = c.getOrCreateIntProperty("fireLauncherId", "ids", 783).getInt();
-		itemfirelauncher = new ItemFireLauncher(fireflowerId).setIconIndex(fireLauncherTexture).setItemName("Firelauncher").setTabToDisplayOn(CreativeTabs.tabCombat); 
+		fireLauncherId = c.get("fireLauncherId", "ids", 783).getInt();
+		itemfirelauncher = new ItemFireLauncher(fireflowerId).setIconIndex(fireLauncherTexture).setItemName("Firelauncher").setCreativeTab(CreativeTabs.tabCombat); 
 	}
 	
 	void initDawnFlower(Configuration c)
 	{
 		dawnflowerTexture = 39;
-		dawnflowerId = c.getOrCreateIntProperty("dawnflowerId", "ids", 1241).getInt();
+		dawnflowerId = c.get("dawnflowerId", "ids", 1241).getInt();
 		blockdawnflower = new BlockDawnflower(dawnflowerId, dawnflowerTexture).setBlockName("Dawnflower");
 	}
 	
 	void initBerryBush(Configuration c)
 	{
 		berryBushTexture = 27;
-		berryBushId = c.getOrCreateIntProperty("berryBushId", "ids", 1240).getInt();
+		berryBushId = c.get("berryBushId", "ids", 1240).getInt();
 		blockberrybush = new BlockFlower2(berryBushId, berryBushTexture){
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -366,7 +366,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Berry Bush");
 		berryTexture = 28;
-		berryId = c.getOrCreateIntProperty("berryId", "ids", 9203).getInt();
+		berryId = c.get("berryId", "ids", 9203).getInt();
 		itemberry = new ItemFood(berryId, 0, 0, false){
 			@Override
 			public int getMaxItemUseDuration(ItemStack par1ItemStack)
@@ -389,7 +389,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		berryPieTexture1 = 29;
 		berryPieTexture2 = 30;
 		berryPieTexture3 = 31;
-		berryPieId = c.getOrCreateIntProperty("berryPieId", "ids", 7209).getInt();
+		berryPieId = c.get("berryPieId", "ids", 7209).getInt();
 		itemberrypie = new ItemBerryPie(berryPieId, berryPieTexture1, berryPieTexture2, berryPieTexture3).setItemName("Berry Pie");
 	}
 	
@@ -397,7 +397,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	{
 //		c.getor
 		lotusTexture = 32;
-		lotusId = c.getOrCreateIntProperty("lotusId", "ids", 1239).getInt();
+		lotusId = c.get("lotusId", "ids", 1239).getInt();
 		blocklotus = new BlockFlower2(lotusId, lotusTexture){
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -406,7 +406,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Lotus");
 		lotusBlossomTexture = 33;
-		lotusBlossomId = c.getOrCreateIntProperty("lotusBlossomId", "ids", 2390).getInt();
+		lotusBlossomId = c.get("lotusBlossomId", "ids", 2390).getInt();
 		itemlotusblossom = new ItemFood(lotusBlossomId, 0, 0, false){
 			@Override
 			public int getMaxItemUseDuration(ItemStack par1ItemStack)
@@ -431,7 +431,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	void initLily(Configuration c)
 	{
 		lilyTexture = 34;
-		lilyId = c.getOrCreateIntProperty("lilyId", "ids", 1238).getInt();
+		lilyId = c.get("lilyId", "ids", 1238).getInt();
 		blocklily = new BlockFlower2(lilyId, lilyTexture){
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -440,10 +440,10 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Lily");
 		lilySeedsTexture = 35;
-		lilySeedsId = c.getOrCreateIntProperty("lilySeedsId", "ids", 2380).getInt();
-		itemlilyseeds = new ItemTMPSeeds(lilySeedsId, blocklily).setIconIndex(lilySeedsTexture).setItemName("Lily Seeds").setTabToDisplayOn(CreativeTabs.tabMaterials);
+		lilySeedsId = c.get("lilySeedsId", "ids", 2380).getInt();
+		itemlilyseeds = new ItemTMPSeeds(lilySeedsId, blocklily).setIconIndex(lilySeedsTexture).setItemName("Lily Seeds").setCreativeTab(CreativeTabs.tabMaterials);
 		gildedlilyTexture = 37;
-		gildedlilyId = c.getOrCreateIntProperty("gildedlilyId", "ids", 1237).getInt();
+		gildedlilyId = c.get("gildedlilyId", "ids", 1237).getInt();
 		blockgildedlily = new BlockFlower2(gildedlilyId, gildedlilyTexture){
 			@Override
 			public int idDropped(int i, Random random, int j)
@@ -459,7 +459,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Gilded Lily");
 		smallGildedlilyTexture = 38;
-		smallGildedlilyId = c.getOrCreateIntProperty("smallGildedlilyId", "ids", 1236).getInt();
+		smallGildedlilyId = c.get("smallGildedlilyId", "ids", 1236).getInt();
 		blocksmallgildedlily = new BlockFlower2(smallGildedlilyId, smallGildedlilyTexture){
 			{
 				setTickRandomly(true);
@@ -474,18 +474,18 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			}
 		}.setBlockName("Small Gilded Lily");
 		gildedlilySeedsTexture = 36;
-		gildedlilySeedsId = c.getOrCreateIntProperty("gildedlilySeedsId", "ids", 2393).getInt();
+		gildedlilySeedsId = c.get("gildedlilySeedsId", "ids", 2393).getInt();
 		itemgildedlilyseeds = new ItemTMPSeeds(gildedlilySeedsId, blocksmallgildedlily){
 			@Override
-			public boolean tryPlaceIntoWorld(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
+			public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float i2, float j2, float k2)
 			{
 				if (world.isMaterialInBB(AxisAlignedBB.getBoundingBox(i - 5, j - 5, k - 5, i + 5, j + 5, k + 5), Material.plants))
 				{
 					return false;
 				}
-				return super.tryPlaceIntoWorld(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
+				return super.onItemUse(itemstack, entityplayer, world, i, j, k, l, i2, j2, k2);
 			}
-		}.setIconIndex(gildedlilySeedsTexture).setItemName("Gilded Lily Seeds").setTabToDisplayOn(CreativeTabs.tabMaterials);
+		}.setIconIndex(gildedlilySeedsTexture).setItemName("Gilded Lily Seeds").setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
 	public void init()

@@ -15,7 +15,7 @@ public class ItemTMPSeeds extends Item
 	}
 
 	@Override
-	public boolean tryPlaceIntoWorld(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float i2, float j2, float k2)
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float i2, float j2, float k2)
 	{
 		if (par3World.getBlockId(par4, par5, par6) != Block.snow.blockID)
 		{

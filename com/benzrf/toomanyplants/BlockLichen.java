@@ -7,6 +7,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.BlockFlower;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
+import net.minecraftforge.common.ForgeDirection;
 
 public class BlockLichen extends BlockFlower2
 {
@@ -48,6 +49,12 @@ public class BlockLichen extends BlockFlower2
 	public int getRenderType()
 	{
 		return 0;
+	}
+	
+	@Override
+	public boolean canBlockStay(World par1World, int par2, int par3, int par4)
+	{
+		return (par1World.getFullBlockLightValue(par2, par3, par4) >= 8 || par1World.canBlockSeeTheSky(par2, par3, par4)) && canThisPlantGrowOnThisBlockID(par1World.getBlockId(par2, par3 - 1, par4));
 	}
 	
 	@Override
