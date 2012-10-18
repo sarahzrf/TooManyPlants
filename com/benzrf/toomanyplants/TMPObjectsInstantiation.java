@@ -24,7 +24,7 @@ import net.minecraft.src.World;
 import net.minecraftforge.common.Configuration;
 
 public class TMPObjectsInstantiation extends TMPObjectsDeclaration
-{	
+{
 	public void preInit(Configuration c)
 	{
 		initGlowFlower(c);

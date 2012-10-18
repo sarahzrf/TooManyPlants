@@ -153,4 +153,11 @@ public class TMPObjectsDeclaration
 	int gildedlilySeedsTexture;
 	int gildedlilySeedsId;
 	public Item itemgildedlilyseeds;
+	
+	int frozenNetherrackTexture;
+	int frozenNetherrackId;
+	public Block blockfrozennetherrack;
+	int chillspikeTexture;
+	int chillspikeId;
+	public Block blockchillspike;
 }
