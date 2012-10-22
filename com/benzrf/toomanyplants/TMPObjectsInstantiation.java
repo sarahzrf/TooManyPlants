@@ -9,6 +9,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
+import net.minecraft.src.BlockNetherrack;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
@@ -42,6 +43,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		initBerryBush(c);
 		initLotus(c);
 		initLily(c);
+		initChillspike(c);
 	}
 	
 	void initGlowFlower(Configuration c)
@@ -329,7 +331,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	{
 		dawnflowerTexture = 39;
 		dawnflowerId = c.getBlock("dawnflowerId", 1241).getInt();
-		blockdawnflower = new BlockDawnflower(dawnflowerId, dawnflowerTexture).setBlockName("Dawnflower");
+		blockdawnflower = new BlockFlower2(dawnflowerId, dawnflowerTexture).setBlockName("Dawnflower");
 	}
 	
 	void initBerryBush(Configuration c)
@@ -487,6 +489,31 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		}.setIconIndex(gildedlilySeedsTexture).setItemName("Gilded Lily Seeds").setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
+	void initChillspike(Configuration c)
+	{
+		frozenNetherrackTexture = 40;
+		frozenNetherrackId = c.getBlock("frozenNetherrackId", 1235).getInt();
+		blockfrozennetherrack = new BlockNetherrack(frozenNetherrackId, frozenNetherrackTexture){
+			@Override
+			public void onNeighborBlockChange(World world, int i, int j, int k, int l)
+			{
+				if (world.getBlockId(i, j + 1, k) == Block.fire.blockID)
+				{
+					world.setBlock(i, j + 1, k, 0);
+				}
+			}
+			@Override
+			public String getTextureFile()
+			{
+				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				
+			}
+		}.setBlockName("Frozen Netherrack");
+		chillspikeTexture = 41;
+		chillspikeId = c.getBlock("chillspikeId", 1234).getInt();
+		blockchillspike = new BlockChillspike(chillspikeId, chillspikeTexture).setBlockName("Chillspike").setCreativeTab(CreativeTabs.tabDecorations);
+	}
+	
 	public void init()
 	{
 		registerBlocks();
@@ -516,6 +543,8 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		GameRegistry.registerBlock(blocklily);
 		GameRegistry.registerBlock(blockgildedlily);
 		GameRegistry.registerBlock(blocksmallgildedlily);
+		GameRegistry.registerBlock(blockfrozennetherrack);
+		GameRegistry.registerBlock(blockchillspike);
 	}
 	
 	void addNames()
@@ -554,6 +583,8 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		LanguageRegistry.addName(blocksmallgildedlily, "Small Gilded Lily");
 		LanguageRegistry.addName(blocklotus, "Lotus");
 		LanguageRegistry.addName(blockberrybush, "Berry Bush");
+		LanguageRegistry.addName(blockfrozennetherrack, "Frozen Netherrack");
+		LanguageRegistry.addName(blockchillspike, "Chillspike");
 	}
 	
 	void addRecipes()

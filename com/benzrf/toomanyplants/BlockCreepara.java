@@ -181,50 +181,50 @@ public class BlockCreepara extends Block
 		return sideCount == 5;
 	}
 	
-	private void sparkle(World par1World, int par2, int par3, int par4)
+	private void sparkle(World world, int i, int j, int k)
 	{
-		Random random = par1World.rand;
+		Random random = world.rand;
 		double d = 0.0625D;
 
-		for (int i = 0; i < 6; i++)
+		for (int i2 = 0; i2 < 6; i2++)
 		{
-			double d1 = (float)par2 + random.nextFloat();
-			double d2 = (float)par3 + random.nextFloat();
-			double d3 = (float)par4 + random.nextFloat();
+			double d1 = (float)i + random.nextFloat();
+			double d2 = (float)j + random.nextFloat();
+			double d3 = (float)k + random.nextFloat();
 
-			if (i == 0 && !par1World.isBlockOpaqueCube(par2, par3 + 1, par4))
+			if (i2 == 0 && !world.isBlockOpaqueCube(i, j + 1, k))
 			{
-				d2 = (double)(par3 + 1) + d;
+				d2 = (double)(j + 1) + d;
 			}
 
-			if (i == 1 && !par1World.isBlockOpaqueCube(par2, par3 - 1, par4))
+			if (i2 == 1 && !world.isBlockOpaqueCube(i, j - 1, k))
 			{
-				d2 = (double)(par3 + 0) - d;
+				d2 = (double)(j + 0) - d;
 			}
 
-			if (i == 2 && !par1World.isBlockOpaqueCube(par2, par3, par4 + 1))
+			if (i2 == 2 && !world.isBlockOpaqueCube(i, j, k + 1))
 			{
-				d3 = (double)(par4 + 1) + d;
+				d3 = (double)(k + 1) + d;
 			}
 
-			if (i == 3 && !par1World.isBlockOpaqueCube(par2, par3, par4 - 1))
+			if (i2 == 3 && !world.isBlockOpaqueCube(i, j, k - 1))
 			{
-				d3 = (double)(par4 + 0) - d;
+				d3 = (double)(k + 0) - d;
 			}
 
-			if (i == 4 && !par1World.isBlockOpaqueCube(par2 + 1, par3, par4))
+			if (i2 == 4 && !world.isBlockOpaqueCube(i + 1, j, k))
 			{
-				d1 = (double)(par2 + 1) + d;
+				d1 = (double)(i + 1) + d;
 			}
 
-			if (i == 5 && !par1World.isBlockOpaqueCube(par2 - 1, par3, par4))
+			if (i2 == 5 && !world.isBlockOpaqueCube(i - 1, j, k))
 			{
-				d1 = (double)(par2 + 0) - d;
+				d1 = (double)(i + 0) - d;
 			}
 
-			if (d1 < (double)par2 || d1 > (double)(par2 + 1) || d2 < 0.0D || d2 > (double)(par3 + 1) || d3 < (double)par4 || d3 > (double)(par4 + 1))
+			if (d1 < (double)i || d1 > (double)(i + 1) || d2 < 0.0D || d2 > (double)(j + 1) || d3 < (double)k || d3 > (double)(k + 1))
 			{
-				par1World.spawnParticle("reddust", d1, d2, d3, 0.0D, 10.0D, 0.0D);
+				world.spawnParticle("reddust", d1, d2, d3, 0.0D, 10.0D, 0.0D);
 			}
 		}
 	}
