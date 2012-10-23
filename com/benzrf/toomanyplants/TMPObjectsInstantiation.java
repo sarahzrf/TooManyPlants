@@ -495,20 +495,37 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		frozenNetherrackId = c.getBlock("frozenNetherrackId", 1235).getInt();
 		blockfrozennetherrack = new BlockNetherrack(frozenNetherrackId, frozenNetherrackTexture){
 			@Override
+			public void onBlockAdded(World world, int i, int j, int k)
+			{
+				if (world.getBlockId(i, j + 1, k) == Block.fire.blockID)
+				{
+					world.setBlock(i, j + 1, k, 0);
+				}
+				if (world.getBlockId(i, j + 1, k) == Block.lavaStill.blockID || world.getBlockId(i, j + 1, k) == Block.lavaMoving.blockID)
+				{
+					world.setBlock(i, j, k, Block.netherrack.blockID);
+					world.playAuxSFX(1004, i, j, k, 0);
+				}
+			}
+			@Override
 			public void onNeighborBlockChange(World world, int i, int j, int k, int l)
 			{
 				if (world.getBlockId(i, j + 1, k) == Block.fire.blockID)
 				{
 					world.setBlock(i, j + 1, k, 0);
 				}
+				if (world.getBlockId(i, j + 1, k) == Block.lavaStill.blockID || world.getBlockId(i, j + 1, k) == Block.lavaMoving.blockID)
+				{
+					world.setBlock(i, j, k, Block.netherrack.blockID);
+					world.playAuxSFX(1004, i, j, k, 0);
+				}
 			}
 			@Override
 			public String getTextureFile()
 			{
 				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
-				
 			}
-		}.setBlockName("Frozen Netherrack");
+		}.setHardness(0.8F).setBlockName("Frozen Netherrack");
 		chillspikeTexture = 41;
 		chillspikeId = c.getBlock("chillspikeId", 1234).getInt();
 		blockchillspike = new BlockChillspike(chillspikeId, chillspikeTexture).setBlockName("Chillspike").setCreativeTab(CreativeTabs.tabDecorations);

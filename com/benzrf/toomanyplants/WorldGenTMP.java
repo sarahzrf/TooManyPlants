@@ -43,15 +43,7 @@ public class WorldGenTMP implements IWorldGenerator
 					{
 						for (int[] t : BlockChillspike.toFreeze)
 						{
-							setIfNetherrack(world, i + t[0], j + t[1], k + t[2]);
-						}
-					}
-					
-					void setIfNetherrack(World world, int i, int j, int k)
-					{
-						if (world.getBlockId(i, j, k) == Block.netherrack.blockID)
-						{
-							world.setBlock(i, j, k, TooManyPlants.objs.blockfrozennetherrack.blockID);
+							BlockChillspike.setIfNetherrack(world, i + t[0], j + t[1], k + t[2]);
 						}
 					}
 				};

@@ -10,17 +10,39 @@ public class BlockChillspike extends BlockFlower2
 	protected BlockChillspike(int par1, int par2)
 	{
 		super(par1, par2);
+		setTickRandomly(true);
+	}
+	
+	@Override
+	public void updateTick(World world, int i, int j, int k, Random random)
+	{
+		if (random.nextInt(3) == 0)
+		{
+			int[] t = toFreeze[random.nextInt(toFreeze.length)];
+			setIfNetherrack(world, i + t[0], j + t[1], k + t[2]);
+		}
+	}
+	
+	@Override
+	public void onBlockAdded(World world, int i, int j, int k)
+	{
+		super.onBlockAdded(world, i, j, k);
+		checkBlock(world, i + 1, j, k);
+		checkBlock(world, i - 1, j, k);
+		checkBlock(world, i, j + 1, k);
+		checkBlock(world, i, j, k + 1);
+		checkBlock(world, i, j, k - 1);
 	}
 	
 	@Override
 	public void onNeighborBlockChange(World world, int i, int j, int k, int l)
 	{
 		super.onNeighborBlockChange(world, i, j, k, l);
-		/*meta = meta | (*/checkBlock(world, i + 1, j, k);// << 0);
-		/*meta = meta | (*/checkBlock(world, i - 1, j, k);// << 1);
+		checkBlock(world, i + 1, j, k);
+		checkBlock(world, i - 1, j, k);
 		checkBlock(world, i, j + 1, k);
-		/*meta = meta | (*/checkBlock(world, i, j, k + 1);// << 2);
-		/*meta = meta | (*/checkBlock(world, i, j, k - 1);// << 3);
+		checkBlock(world, i, j, k + 1);
+		checkBlock(world, i, j, k - 1);
 	}
 	
 	private byte checkBlock(World world, int i, int j, int k)
@@ -47,10 +69,6 @@ public class BlockChillspike extends BlockFlower2
 	public void randomDisplayTick(World world, int i, int j, int k, Random random)
 	{
 		sparkle(world, i, j, k);
-//		if (((meta & 1) >> 0) == 1) sparkle(world, i + 1, j, k);
-//		if (((meta & 2) >> 1) == 1) sparkle(world, i - 1, j, k);
-//		if (((meta & 4) >> 2) == 1) sparkle(world, i, j, k + 1);
-//		if (((meta & 8) >> 3) == 1) sparkle(world, i, j, k - 1);
 	}
 	
 	private void sparkle(World world, int i, int j, int k)
@@ -111,6 +129,14 @@ public class BlockChillspike extends BlockFlower2
 	protected boolean canThisPlantGrowOnThisBlockID(int i)
 	{
 		return i == Block.netherrack.blockID || i == TooManyPlants.objs.blockfrozennetherrack.blockID;
+	}
+	
+	public static void setIfNetherrack(World world, int i, int j, int k)
+	{
+		if (world.getBlockId(i, j, k) == Block.netherrack.blockID)
+		{
+			world.setBlock(i, j, k, TooManyPlants.objs.blockfrozennetherrack.blockID);
+		}
 	}
 	
 	public static int[][] toFreeze = {
