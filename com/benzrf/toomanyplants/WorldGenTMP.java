@@ -12,12 +12,10 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenTMP implements IWorldGenerator
 {
-	TMPPlantGen gen = new TMPPlantGen();
-	
 	@Override
 	public void generate(Random random, int x, int z, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		gen.replace = 0;
+		TMPPlantGen gen = new TMPPlantGen();
 		
 		x *= 16;
 		z *= 16;
@@ -33,6 +31,32 @@ public class WorldGenTMP implements IWorldGenerator
 			gen.limit = 1;
 			gen.metadata = 4;
 			gen.generate(world, random, x + 8, random.nextInt(120), z + 8);
+			
+			if (random.nextInt(4) == 0)
+			{
+				gen.plantBlockId = TooManyPlants.objs.blockchillspike.blockID;
+				gen.limit = 1;
+				gen.metadata = 0;
+				gen.run = new GenRunnable(){
+					@Override
+					public void run(World world, int i, int j, int k)
+					{
+						for (int[] t : BlockChillspike.toFreeze)
+						{
+							setIfNetherrack(world, i + t[0], j + t[1], k + t[2]);
+						}
+					}
+					
+					void setIfNetherrack(World world, int i, int j, int k)
+					{
+						if (world.getBlockId(i, j, k) == Block.netherrack.blockID)
+						{
+							world.setBlock(i, j, k, TooManyPlants.objs.blockfrozennetherrack.blockID);
+						}
+					}
+				};
+				gen.generate(world, random, x + 8, random.nextInt(120), z + 8);
+			}
 			return;
 		}
 		
@@ -151,8 +175,6 @@ public class WorldGenTMP implements IWorldGenerator
 	
 	class TMPPlantGen
 	{
-		public int plantBlockId = 0;
-
 		public void generate(World world, Random random, int i, int j, int k)
 		{
 			if (replace != 0)
@@ -173,6 +195,10 @@ public class WorldGenTMP implements IWorldGenerator
 				if ((world.isAirBlock(i1, j1, k1) || (world.getBlockId(i1, j1, k1) == Block.snow.blockID)) && (Block.blocksList[plantBlockId]).canBlockStay(world, i1, j1, k1))
 				{
 					world.setBlockAndMetadata(i1, j1, k1, plantBlockId, metadata);
+					if (run != null)
+					{
+						run.run(world, i1, j1, k1);
+					}
 					count++;
 //					System.out.println("Generated a " + Block.blocksList[plantBlockId].getBlockName() + " at " + i1 + ", " + j1 + ", " + k1);
 				}
@@ -202,5 +228,13 @@ public class WorldGenTMP implements IWorldGenerator
 		public int limit = 0;
 		public int metadata = 0;
 		public int replace = 0;
+		public GenRunnable run;
+		public int plantBlockId = 0;
+	}
+}
+class GenRunnable
+{
+	public void run(World world, int i, int j, int k)
+	{
 	}
 }

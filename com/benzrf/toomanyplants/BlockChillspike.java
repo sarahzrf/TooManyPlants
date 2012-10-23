@@ -16,46 +16,45 @@ public class BlockChillspike extends BlockFlower2
 	public void onNeighborBlockChange(World world, int i, int j, int k, int l)
 	{
 		super.onNeighborBlockChange(world, i, j, k, l);
-		sparkle(world, i, j, k);
-		sparkle(world, i, j, k);
-		checkBlock(world, i + 1, j, k);
-		checkBlock(world, i - 1, j, k);
+		/*meta = meta | (*/checkBlock(world, i + 1, j, k);// << 0);
+		/*meta = meta | (*/checkBlock(world, i - 1, j, k);// << 1);
 		checkBlock(world, i, j + 1, k);
-		checkBlock(world, i, j, k + 1);
-		checkBlock(world, i, j, k - 1);
+		/*meta = meta | (*/checkBlock(world, i, j, k + 1);// << 2);
+		/*meta = meta | (*/checkBlock(world, i, j, k - 1);// << 3);
 	}
 	
-	private void checkBlock(World world, int i, int j, int k)
+	private byte checkBlock(World world, int i, int j, int k)
 	{
 		if (world.getBlockId(i, j, k) == Block.waterMoving.blockID || world.getBlockId(i, j, k) == Block.waterStill.blockID)
 		{
 			world.setBlock(i, j, k, Block.ice.blockID);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
+			return 1;
 		}
 		if (world.getBlockId(i, j, k) == Block.lavaMoving.blockID || world.getBlockId(i, j, k) == Block.lavaStill.blockID)
 		{
 			world.setBlock(i, j, k, Block.cobblestone.blockID);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
+			return 1;
 		}
 		if (world.getBlockId(i, j, k) == Block.fire.blockID)
 		{
 			world.setBlock(i, j, k, 0);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
-			sparkle(world, i, j, k);
+			return 1;
 		}
+		return 0;
+	}
+	
+	@Override
+	public void randomDisplayTick(World world, int i, int j, int k, Random random)
+	{
+		sparkle(world, i, j, k);
+//		if (((meta & 1) >> 0) == 1) sparkle(world, i + 1, j, k);
+//		if (((meta & 2) >> 1) == 1) sparkle(world, i - 1, j, k);
+//		if (((meta & 4) >> 2) == 1) sparkle(world, i, j, k + 1);
+//		if (((meta & 8) >> 3) == 1) sparkle(world, i, j, k - 1);
 	}
 	
 	private void sparkle(World world, int i, int j, int k)
 	{
-		System.out.println("spahklin");
 		Random random = world.rand;
 		double d = 0.0625D;
 
@@ -97,15 +96,30 @@ public class BlockChillspike extends BlockFlower2
 
 			if (d1 < (double)i || d1 > (double)(i + 1) || d2 < 0.0D || d2 > (double)(j + 1) || d3 < (double)k || d3 > (double)(k + 1))
 			{
-				System.out.println("spakle");
-				world.spawnParticle("reddust", d1, d2, d3, 0.0D, 10.0D, 0.0D);
+				world.spawnParticle("reddust", d1, d2, d3, -0.5D, 3.0D, 2.0D);
 			}
 		}
 	}
 	
 	@Override
+	public boolean canBlockStay(World world, int i, int j, int k)
+	{
+		return canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k));
+	}
+	
+	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int i)
 	{
-		return i == Block.netherrack.blockID|| i == TooManyPlants.objs.blockfrozennetherrack.blockID;
+		return i == Block.netherrack.blockID || i == TooManyPlants.objs.blockfrozennetherrack.blockID;
 	}
+	
+	public static int[][] toFreeze = {
+			{0, 3, 0},
+			{1, 2, 0}, {0, 2, 1}, {0, 2, 0}, {0, 2, -1}, {-1, 2, 0},
+			{2, 1, 0}, {1, 1, 1}, {1, 1, 0}, {1, 1, -1}, {0, 1, 2}, {0, 1, 1}, {0, 1, 0}, {0, 1, -1}, {0, 1, -2}, {-1, 1, 1}, {-1, 1, 0}, {-1, 1, -1}, {-2, 1, 0},
+			{2, 0, 0}, {1, 0, 1}, {1, 0, 0}, {1, 0, -1}, {0, 0, 2}, {0, 0, 1}, {0, 0, 0}, {0, 0, -1}, {0, 0, -2}, {-1, 0, 1}, {-1, 0, 0}, {-1, 0, -1}, {-2, 0, 0},
+			{2, -1, 0}, {1, -1, 1}, {1, -1, 0}, {1, -1, -1}, {0, -1, 2}, {0, -1, 1}, {0, -1, 0}, {0, -1, -1}, {0, -1, -2}, {-1, -1, 1}, {-1, -1, 0}, {-1, -1, -1}, {-2, -1, 0},
+			{1, -2, 0}, {0, -2, 1}, {0, -2, 0}, {0, -2, -1}, {-1, -2, 0},
+			{0, -3, 0}
+	};
 }
