@@ -50,13 +50,13 @@ import net.minecraftforge.common.Configuration;
 (
 	modid = "toomanyplants",
 	name="TooManyPlants",
-	version="1.2.0"
+	version="1.3.0"
 )
 @NetworkMod
 (
 	serverSideRequired = false,
 	clientSideRequired = true,
-	versionBounds = "[1.2]"
+	versionBounds = "[1.3]"
 )
 public class TooManyPlants
 {
@@ -68,6 +68,7 @@ public class TooManyPlants
 	public static CommonProxy proxy;
 	public static TMPObjectsInstantiation objs;
 	public static IWorldGenerator worldgen;
+	public static final String textureFile = "/com/benzrf/toomanyplants/resources/plantssheet.png";
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)

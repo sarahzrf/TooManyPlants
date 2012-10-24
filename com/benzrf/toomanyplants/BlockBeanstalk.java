@@ -109,6 +109,6 @@ public class BlockBeanstalk extends Block
 	@Override
 	public String getTextureFile()
 	{
-		return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+		return TooManyPlants.textureFile;
 	}
 }

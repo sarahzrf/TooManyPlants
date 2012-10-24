@@ -72,7 +72,7 @@ public class ItemTMPSeeds extends Item
 	@Override
 	public String getTextureFile()
 	{
-		return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+		return TooManyPlants.textureFile;
 	}
 	
 	private final Block blockType;

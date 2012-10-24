@@ -52,7 +52,7 @@ public class ItemBerryPie extends ItemFood
 	@Override
 	public String getTextureFile()
 	{
-		return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+		return TooManyPlants.textureFile;
 	}
 	
 	int i1;

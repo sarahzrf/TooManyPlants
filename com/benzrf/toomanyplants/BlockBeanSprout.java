@@ -50,6 +50,6 @@ public class BlockBeanSprout extends BlockFlower
 	@Override
 	public String getTextureFile()
 	{
-		return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+		return TooManyPlants.textureFile;
 	}
 }

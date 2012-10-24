@@ -13,7 +13,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerClientJunk()
 	{
-		MinecraftForgeClient.preloadTexture("/com/benzrf/toomanyplants/resources/plantssheet.png");
+		MinecraftForgeClient.preloadTexture(TooManyPlants.textureFile);
 		FMLClientHandler.instance().getClient().renderEngine.registerTextureFX(new TextureDawnFlowerFX(TooManyPlants.objs.blockdawnflower.blockIndexInTexture, Minecraft.getMinecraft()));
 	}
 }

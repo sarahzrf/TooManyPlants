@@ -157,7 +157,20 @@ public class TMPObjectsDeclaration
 	int frozenNetherrackTexture;
 	int frozenNetherrackId;
 	public Block blockfrozennetherrack;
+	// <divider />
 	int chillspikeTexture;
 	int chillspikeId;
 	public Block blockchillspike;
+	
+	int goldenShearsTexture;
+	int goldenShearsId;
+	public Item itemgoldenshears;
+	// <divider />
+	int autocraftingShearsTexture;
+	int autocraftingShearsId;
+	public Item itemautocraftingshears;
+	// <divider />
+	int bountyShearsTexture;
+	int bountyShearsId;
+	public Item itembountyshears;
 }

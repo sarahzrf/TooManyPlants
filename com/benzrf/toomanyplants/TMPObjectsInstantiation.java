@@ -17,6 +17,7 @@ import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemSeeds;
+import net.minecraft.src.ItemShears;
 import net.minecraft.src.ItemSoup;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
@@ -43,6 +44,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		initBerryBush(c);
 		initLotus(c);
 		initLily(c);
+		initExtraShears(c);
 		initChillspike(c);
 	}
 	
@@ -78,7 +80,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(evilFlowerPetalTexture).setItemName("Evil Flower Petal").setCreativeTab(CreativeTabs.tabMaterials);
 		animationEssenceTexture = 3;
@@ -87,7 +89,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(animationEssenceTexture).setItemName("Magic Powder").setCreativeTab(CreativeTabs.tabMaterials);
 	}
@@ -125,7 +127,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(rainstickTexture).setItemName("Rainstick").setCreativeTab(CreativeTabs.tabTools);
 	}
@@ -152,7 +154,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(magicBeanTexture).setItemName("Magic Bean");
 		lesserMagicBeanTexture = 8;
@@ -171,7 +173,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(lesserMagicBeanTexture).setItemName("Lesser Magic Bean");
 		podTexture = 9;
@@ -204,7 +206,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(beanTexture).setItemName("Bean");
 		beanStewTexture = 13;
@@ -219,7 +221,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(beanStewTexture).setItemName("Bean Stew");
 	}
@@ -273,7 +275,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(boneseedTexture).setItemName("Boneseed");
 	}
@@ -384,7 +386,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setAlwaysEdible().setItemName("Berry").setIconIndex(berryTexture);
 		berryPieTexture1 = 29;
@@ -396,7 +398,6 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	
 	void initLotus(Configuration c)
 	{
-//		c.getor
 		lotusTexture = 32;
 		lotusId = c.getBlock("lotusId", 1239).getInt();
 		blocklotus = new BlockFlower2(lotusId, lotusTexture){
@@ -424,7 +425,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setAlwaysEdible().setIconIndex(lotusBlossomTexture).setItemName("Lotus Blossom");
 	}
@@ -489,6 +490,19 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		}.setIconIndex(gildedlilySeedsTexture).setItemName("Gilded Lily Seeds").setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
+	void initExtraShears(Configuration c)
+	{
+		goldenShearsTexture = 42;
+		goldenShearsId = c.getItem("goldenShearsId", 1025).getInt();
+		itemgoldenshears = new ItemShears(goldenShearsId){
+			@Override
+			public String getTextureFile()
+			{
+				return TooManyPlants.textureFile;
+			}
+		}.setIconIndex(goldenShearsTexture).setItemName("Golden Shears").setMaxDamage(119).setCreativeTab(CreativeTabs.tabTools);
+	}
+	
 	void initChillspike(Configuration c)
 	{
 		frozenNetherrackTexture = 40;
@@ -523,7 +537,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public String getTextureFile()
 			{
-				return "/com/benzrf/toomanyplants/resources/plantssheet.png";
+				return TooManyPlants.textureFile;
 			}
 		}.setHardness(0.8F).setBlockName("Frozen Netherrack");
 		chillspikeTexture = 41;
@@ -600,6 +614,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		LanguageRegistry.addName(blocksmallgildedlily, "Small Gilded Lily");
 		LanguageRegistry.addName(blocklotus, "Lotus");
 		LanguageRegistry.addName(blockberrybush, "Berry Bush");
+		LanguageRegistry.addName(itemgoldenshears, "Golden Shears");
 		LanguageRegistry.addName(blockfrozennetherrack, "Frozen Netherrack");
 		LanguageRegistry.addName(blockchillspike, "Chillspike");
 	}
@@ -614,8 +629,10 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		GameRegistry.addRecipe(new ItemStack(itemgildedlilyseeds, 1), new Object[] {"###", "#O#", "###", ('#'), Item.goldNugget, ('O'), itemlilyseeds});
 		GameRegistry.addRecipe(new ItemStack(itemfirelauncher, 1), new Object[] {"#", "O", ('O'), Item.stick, ('#'), blockfireflower});
 		GameRegistry.addRecipe(new ItemStack(itemrainstick, 1), new Object[] {"#", "O", ('O'), Item.stick, ('#'), blockairflower});
+		GameRegistry.addRecipe(new ItemStack(itemgoldenshears, 1), new Object[] {" #", "# ", ('#'), Item.ingotGold});
 		GameRegistry.addShapelessRecipe(new ItemStack(itemmagicbean, 1), new Object[] {itemanimationessence, itembean});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 3, 5), new Object[] {blockdawnflower});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.bucketWater, 1), new Object[] {blockpricklypear, Item.bucketEmpty});
+		GameRegistry.addSmelting(itemlichen.shiftedIndex, new ItemStack(itemroastedlichen, 1), 0.1F);
 	}
 }

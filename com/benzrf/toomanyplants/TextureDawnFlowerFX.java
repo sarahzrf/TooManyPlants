@@ -52,7 +52,7 @@ public class TextureDawnFlowerFX extends FMLTextureFX
 	@Override
 	public void bindImage(RenderEngine renderengine)
 	{
-		ForgeHooksClient.bindTexture("/com/benzrf/toomanyplants/resources/plantssheet.png", 0);
+		ForgeHooksClient.bindTexture(TooManyPlants.textureFile, 0);
 	}
 	
 	@Override
