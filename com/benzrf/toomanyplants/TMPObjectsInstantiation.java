@@ -542,7 +542,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		}.setHardness(0.8F).setBlockName("Frozen Netherrack");
 		chillspikeTexture = 41;
 		chillspikeId = c.getBlock("chillspikeId", 1234).getInt();
-		blockchillspike = new BlockChillspike(chillspikeId, chillspikeTexture).setBlockName("Chillspike").setCreativeTab(CreativeTabs.tabDecorations);
+		blockchillspike = new BlockChillspike(chillspikeId, chillspikeTexture).setHardness(0.5F).setBlockName("Chillspike").setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	public void init()

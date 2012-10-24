@@ -2,7 +2,12 @@ package com.benzrf.toomanyplants;
 
 import java.util.Random;
 
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
+import net.minecraft.src.DamageSource;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityLiving;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;
 
 public class BlockChillspike extends BlockFlower2
@@ -32,6 +37,40 @@ public class BlockChillspike extends BlockFlower2
 		checkBlock(world, i, j + 1, k);
 		checkBlock(world, i, j, k + 1);
 		checkBlock(world, i, j, k - 1);
+	}
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	{
+		float f = 0.2F;
+		return AxisAlignedBB.getBoundingBox((float)par2 + f, par3, (float)par4 + f, (float)(par2 + 1) - f, (float)(par3 + 1) - 0.2F, (float)(par4 + 1) - f);
+	}
+	
+	@Override
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	{
+		return getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+	}
+	
+	@Override
+	public void onBlockClicked(World world, int i, int j, int k, EntityPlayer entityplayer)
+	{
+		if (entityplayer.inventory.getCurrentItem() != null && entityplayer.inventory.getCurrentItem().getItem().shiftedIndex == TooManyPlants.objs.itemgoldenshears.shiftedIndex)
+		{
+			return;
+		}
+		entityplayer.knockBack(null, 1, i - entityplayer.posX, k - entityplayer.posZ);
+		entityplayer.attackEntityFrom(DamageSource.cactus, 10);
+	}
+	
+	@Override
+	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
+	{
+		if (entity instanceof EntityLiving)
+		{
+			entity.attackEntityFrom(DamageSource.cactus, 1);
+			((EntityLiving) entity).knockBack(null, 3, i - entity.posX, k - entity.posZ);
+		}
 	}
 	
 	@Override

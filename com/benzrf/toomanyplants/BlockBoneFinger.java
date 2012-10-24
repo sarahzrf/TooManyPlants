@@ -76,7 +76,7 @@ public class BlockBoneFinger extends BlockFlower
 	@Override
 	public boolean canBlockStay(World world, int i, int j, int k)
 	{
-		return world.getFullBlockLightValue(i, j, k) <= 12 && canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k));
+		return world.getFullBlockLightValue(i, j, k) <= 10 && canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k));
 	}
 	
 	@Override
