@@ -8,6 +8,7 @@ import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 
 public class BlockChillspike extends BlockFlower2
@@ -162,6 +163,18 @@ public class BlockChillspike extends BlockFlower2
 	public boolean canBlockStay(World world, int i, int j, int k)
 	{
 		return canThisPlantGrowOnThisBlockID(world.getBlockId(i, j - 1, k));
+	}
+	
+	@Override
+	public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l)
+	{
+		dropBlockAsItem_do(world, i, j, k, new ItemStack(this));
+	}
+	
+	@Override
+	public int idDropped(int i, Random random, int j)
+	{
+		return 0;
 	}
 	
 	@Override
