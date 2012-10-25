@@ -27,7 +27,7 @@ public class WorldGenTMP implements IWorldGenerator
 		
 		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.hell))
 		{
-			if (random.nextInt(2) == 0)
+			if (random.nextInt(4) == 0)
 			{
 				gen.plantBlockId = TooManyPlants.objs.blockchillspike.blockID;
 				gen.limit = 1;
