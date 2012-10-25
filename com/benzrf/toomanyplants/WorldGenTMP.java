@@ -27,11 +27,6 @@ public class WorldGenTMP implements IWorldGenerator
 		
 		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.hell))
 		{
-			gen.plantBlockId = TooManyPlants.objs.blockbonefinger.blockID;
-			gen.limit = 1;
-			gen.metadata = 4;
-			gen.generate(world, random, x + 8, random.nextInt(120), z + 8);
-			
 			if (random.nextInt(2) == 0)
 			{
 				gen.plantBlockId = TooManyPlants.objs.blockchillspike.blockID;
@@ -49,6 +44,13 @@ public class WorldGenTMP implements IWorldGenerator
 				};
 				gen.generate(world, random, x + 8, random.nextInt(120), z + 8);
 			}
+			
+			gen.plantBlockId = TooManyPlants.objs.blockbonefinger.blockID;
+			gen.limit = 1;
+			gen.metadata = 4;
+			gen.run = null;
+			gen.generate(world, random, x + 8, random.nextInt(120), z + 8);
+			
 			return;
 		}
 		
