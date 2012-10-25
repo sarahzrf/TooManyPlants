@@ -15,56 +15,56 @@ public class ItemTMPSeeds extends Item
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, int l, float par8, float par9, float par10)
 	{
-		if (par3World.getBlockId(par4, par5, par6) != Block.snow.blockID)
+		if (world.getBlockId(i, j, k) != Block.snow.blockID)
 		{
-			if (par7 == 0)
+			if (l == 0)
 			{
-				--par5;
+				--j;
 			}
 
-			if (par7 == 1)
+			if (l == 1)
 			{
-				++par5;
+				++j;
 			}
 
-			if (par7 == 2)
+			if (l == 2)
 			{
-				--par6;
+				--k;
 			}
 
-			if (par7 == 3)
+			if (l == 3)
 			{
-				++par6;
+				++k;
 			}
 
-			if (par7 == 4)
+			if (l == 4)
 			{
-				--par4;
+				--i;
 			}
 
-			if (par7 == 5)
+			if (l == 5)
 			{
-				++par4;
+				++i;
 			}
 
-			if (!par3World.isAirBlock(par4, par5, par6))
+			if (!world.isAirBlock(i, j, k))
 			{
 				return false;
 			}
 		}
 
-		if (!par2EntityPlayer.func_82247_a(par4, par5, par6, par7, par1ItemStack))
+		if (!entityplayer.func_82247_a(i, j, k, l, itemstack))
 		{
 			return false;
 		}
 		else
 		{
-			if (Block.redstoneWire.canPlaceBlockAt(par3World, par4, par5, par6))
+			if (Block.redstoneWire.canPlaceBlockAt(world, i, j, k))
 			{
-				--par1ItemStack.stackSize;
-				par3World.setBlockWithNotify(par4, par5, par6, Block.redstoneWire.blockID);
+				--itemstack.stackSize;
+				world.setBlockWithNotify(i, j, k, blockType.blockID);
 			}
 
 			return true;
