@@ -29,7 +29,7 @@ public class BlockCreepara extends Block
 			return;
 		}
 		world.setBlockWithNotify(i, j, k, 0);
-		world.createExplosion(null, i, j, k, 3);
+		world.createExplosion(null, i, j, k, 3, true);
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ public class BlockCreepara extends Block
 			return;
 		}
 		world.setBlockWithNotify(i, j, k, 0);
-		world.createExplosion(null, i, j, k, 3);
+		world.createExplosion(null, i, j, k, 3, true);
 	}
 	
 	@Override
@@ -140,7 +140,7 @@ public class BlockCreepara extends Block
 				dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
 				return;
 			}
-			par1World.createExplosion(null, par2, par3, par4, 3);
+			par1World.createExplosion(null, par2, par3, par4, 3, false);
 		}
 	}
 	
@@ -152,7 +152,7 @@ public class BlockCreepara extends Block
 			return;
 		}
 		world.setBlockWithNotify(i, j, k, 0);
-		world.createExplosion(null, i, j, k, 3);
+		world.createExplosion(null, i, j, k, 3, true);
 	}
 	
 	public boolean isCoveredWithWater(World world, int i, int j, int k)
