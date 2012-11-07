@@ -79,6 +79,7 @@ public class TMPObjectsDeclaration
 	int boneseedId;
 	public Item itemboneseed; 
 	
+	public boolean enableLichen;
 	int lichenBlockTexture;
 	int lichenId;
 	public Block blocklichen;

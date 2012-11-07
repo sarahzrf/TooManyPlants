@@ -24,7 +24,7 @@ public class BlockCreepara extends Block
 	@Override
 	public void onBlockClicked(World world, int i, int j, int k, EntityPlayer entityplayer)
 	{
-		if (isCoveredWithWater(world, i, j, k))
+		if (isCoveredWithWater(world, i, j, k) || (entityplayer.inventory.getCurrentItem() != null && entityplayer.inventory.getCurrentItem().getItem().shiftedIndex == TooManyPlants.objs.itemgoldenshears.shiftedIndex))
 		{
 			return;
 		}
@@ -144,16 +144,16 @@ public class BlockCreepara extends Block
 		}
 	}
 	
-	@Override
-	public void breakBlock(World world, int i, int j, int k, int l, int m)
-	{
-		if (isCoveredWithWater(world, i, j, k))
-		{
-			return;
-		}
-		world.setBlockWithNotify(i, j, k, 0);
-		world.createExplosion(null, i, j, k, 3, true);
-	}
+//	@Override
+//	public void breakBlock(World world, int i, int j, int k, int l, int m)
+//	{
+//		if (isCoveredWithWater(world, i, j, k))
+//		{
+//			return;
+//		}
+//		world.setBlockWithNotify(i, j, k, 0);
+//		world.createExplosion(null, i, j, k, 3, true);
+//	}
 	
 	public boolean isCoveredWithWater(World world, int i, int j, int k)
 	{

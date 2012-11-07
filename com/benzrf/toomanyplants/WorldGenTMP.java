@@ -129,11 +129,14 @@ public class WorldGenTMP implements IWorldGenerator
 			gen.generate(world, random, x + 8, random.nextInt(215) + 40, z + 8);
 		}
 		
-		gen.plantBlockId = TooManyPlants.objs.blocklichen.blockID;
-		gen.limit = 5;
-		for (int i = 0; i <= 10; i++)
+		if (TooManyPlants.objs.enableLichen)
 		{
-			gen.generate(world, random, x + 8, 13 * i + 5, z + 8);
+			gen.plantBlockId = TooManyPlants.objs.blocklichen.blockID;
+			gen.limit = 5;
+			for (int i = 0; i <= 10; i++)
+			{
+				gen.generate(world, random, x + 8, 13 * i + 5, z + 8);
+			}
 		}
 		
 		if (world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.desert) || world.getBiomeGenForCoords(x, z).equals(BiomeGenBase.desertHills))

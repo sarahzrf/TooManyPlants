@@ -15,7 +15,7 @@ public class BlockLichen extends BlockFlower2
 	{
 		super(i, j);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
-		setTickRandomly(true);
+		setTickRandomly(TooManyPlants.objs.enableLichen);
 		Block.setBurnProperties(blockID, 1000, 1000);
 	}
 	

@@ -282,6 +282,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 	
 	void initLichen(Configuration c)
 	{
+		enableLichen = c.get("misc", "enableLichen", true).getBoolean(true);
 		lichenBlockTexture = 19;
 		lichenId = c.getBlock("lichenId", 1245).getInt();
 		blocklichen = new BlockLichen(lichenId, lichenBlockTexture).setBlockName("Lichen");
@@ -501,6 +502,16 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(goldenShearsTexture).setItemName("Golden Shears").setMaxDamage(119).setCreativeTab(CreativeTabs.tabTools);
+		
+		/* bountyShearsTexture = 43;
+		bountyShearsId = c.getItem("bountyShearsId", 3140).getInt();
+		itembountyshears = new ItemShears(bountyShearsId){
+			@Override
+			public String getTextureFile()
+			{
+				return TooManyPlants.textureFile;
+			}
+		}.setIconIndex(bountyShearsTexture).setItemName("Shears of Bounty").setMaxDamage(119).setCreativeTab(CreativeTabs.tabTools);*/
 	}
 	
 	void initChillspike(Configuration c)
@@ -615,6 +626,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		LanguageRegistry.addName(blocklotus, "Lotus");
 		LanguageRegistry.addName(blockberrybush, "Berry Bush");
 		LanguageRegistry.addName(itemgoldenshears, "Golden Shears");
+//		LanguageRegistry.addName(itembountyshears, "Shears of Bounty");
 		LanguageRegistry.addName(blockfrozennetherrack, "Frozen Netherrack");
 		LanguageRegistry.addName(blockchillspike, "Chillspike");
 	}
