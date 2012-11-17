@@ -56,7 +56,7 @@ import net.minecraftforge.common.Configuration;
 (
 	serverSideRequired = false,
 	clientSideRequired = true,
-	versionBounds = "[1.3]"
+	versionBounds = "[1.3.1]"
 )
 public class TooManyPlants
 {

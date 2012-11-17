@@ -12,6 +12,14 @@ public class ItemTMPSeeds extends Item
 	{
 		super(par1);
 		blockType = b;
+		soilBlockType = null;
+	}
+	
+	protected ItemTMPSeeds(int par1, Block b, Block b2)
+	{
+		super(par1);
+		blockType = b;
+		soilBlockType = b2;
 	}
 
 	@Override
@@ -61,10 +69,13 @@ public class ItemTMPSeeds extends Item
 		}
 		else
 		{
-			if (Block.redstoneWire.canPlaceBlockAt(world, i, j, k))
+			if (blockType.canPlaceBlockAt(world, i, j, k))
 			{
-				--itemstack.stackSize;
-				world.setBlockWithNotify(i, j, k, blockType.blockID);
+				if ((soilBlockType == null) || ((soilBlockType != null) && soilBlockType.blockID == world.getBlockId(i, j - 1, k)))
+				{
+					--itemstack.stackSize;
+					world.setBlockWithNotify(i, j, k, blockType.blockID);
+				}
 			}
 
 			return true;
@@ -78,4 +89,5 @@ public class ItemTMPSeeds extends Item
 	}
 	
 	private final Block blockType;
+	private final Block soilBlockType;
 }

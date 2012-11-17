@@ -202,13 +202,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		blockbeansprout = new BlockBeanSprout(beanSproutId, beanSproutTexture).setBlockName("Bean Sprout");
 		beanTexture = 12;
 		beanId = c.getItem("beanId", 142).getInt();
-		itembean = new ItemSeeds(beanId, blockbeansprout.blockID, Block.dirt.blockID){
-			@Override
-			public String getTextureFile()
-			{
-				return TooManyPlants.textureFile;
-			}
-		}.setIconIndex(beanTexture).setItemName("Bean");
+		itembean = new ItemTMPSeeds(beanId, blockbeansprout, Block.dirt).setIconIndex(beanTexture).setItemName("Bean");
 		beanStewTexture = 13;
 		beanStewId = c.getItem("beanStewId", 4444).getInt();
 		itembeanstew = new ItemSoup(beanStewId, 20){
@@ -271,13 +265,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		blockbonefinger = new BlockBoneFinger(bonefingerId, bonefingerTexture1, bonefingerTexture2, bonefingerTexture3).setBlockName("Bonefinger");
 		boneseedTexture = 18;
 		boneseedId = c.getItem("boneseedId", 777).getInt();
-		itemboneseed = new ItemSeeds(boneseedId, bonefingerId, Block.netherrack.blockID){
-			@Override
-			public String getTextureFile()
-			{
-				return TooManyPlants.textureFile;
-			}
-		}.setIconIndex(boneseedTexture).setItemName("Boneseed");
+		itemboneseed = new ItemTMPSeeds(boneseedId, blockbonefinger, Block.netherrack).setIconIndex(boneseedTexture).setItemName("Boneseed");
 	}
 	
 	void initLichen(Configuration c)
