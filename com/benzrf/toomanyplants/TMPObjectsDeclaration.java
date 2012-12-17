@@ -22,7 +22,7 @@ public class TMPObjectsDeclaration
 	// <divider />
 	int animationEssenceTexture;
 	int animationEssenceId;
-	public Item itemanimationessence;
+	public Item itemmagicpowder;
 	
 	int airFlowerTexture;
 	int airFlowerId;

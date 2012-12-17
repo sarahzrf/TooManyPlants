@@ -85,7 +85,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		}.setIconIndex(evilFlowerPetalTexture).setItemName("Evil Flower Petal").setCreativeTab(CreativeTabs.tabMaterials);
 		animationEssenceTexture = 3;
 		animationEssenceId = c.getItem("animationEssenceId", 612).getInt();
-		itemanimationessence = new Item(animationEssenceId){
+		itemmagicpowder = new Item(animationEssenceId){
 			@Override
 			public String getTextureFile()
 			{
@@ -439,13 +439,14 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public int idDropped(int i, Random random, int j)
 			{
-				return itemlilyseeds.shiftedIndex;
+				return 0;
 			}
 			@Override
 			public ArrayList<ItemStack> getBlockDropped(World world, int i, int j, int k, int l, int fortune)
 			{
 				ArrayList<ItemStack> a = new ArrayList<ItemStack>();
 				a.add(new ItemStack(Item.ingotGold));
+				a.add(new ItemStack(itemlilyseeds));
 				return a;
 			}
 		}.setBlockName("Gilded Lily");
@@ -500,6 +501,10 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 				return TooManyPlants.textureFile;
 			}
 		}.setIconIndex(bountyShearsTexture).setItemName("Shears of Bounty").setMaxDamage(119).setCreativeTab(CreativeTabs.tabTools);*/
+		
+		autocraftingShearsTexture = 44;
+		autocraftingShearsId = c.getItem("autocraftingShearsId", 3141).getInt();
+		itemautocraftingshears = new ItemAutocraftingShears(autocraftingShearsId).setIconIndex(autocraftingShearsTexture).setItemName("Autocrafting Shears").setMaxDamage(119).setCreativeTab(CreativeTabs.tabTools);
 	}
 	
 	void initChillspike(Configuration c)
@@ -592,7 +597,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		LanguageRegistry.addName(itemmagicbean, "Magic Bean");
 		LanguageRegistry.addName(itemlessermagicbean, "Lesser Magic Bean");
 		LanguageRegistry.addName(itemevilflowerpetal, "Evil Flower Petal");
-		LanguageRegistry.addName(itemanimationessence, "Magic Powder");
+		LanguageRegistry.addName(itemmagicpowder, "Magic Powder");
 		LanguageRegistry.addName(itembean, "Bean");
 		LanguageRegistry.addName(itembeanstew, "Bean Stew");
 		LanguageRegistry.addName(itemboneseed, "Boneseed");
@@ -617,6 +622,7 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 //		LanguageRegistry.addName(itembountyshears, "Shears of Bounty");
 		LanguageRegistry.addName(blockfrozennetherrack, "Frozen Netherrack");
 		LanguageRegistry.addName(blockchillspike, "Chillspike");
+		LanguageRegistry.addName(itemautocraftingshears, "Autocrafting Shears");
 	}
 	
 	void addRecipes()
@@ -624,15 +630,16 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 		GameRegistry.addRecipe(new ItemStack(itembeanstew, 1), new Object[] {" O ", "&&&", " # ", ('#'), Item.bowlSoup, ('O'), Item.wheat, ('&'), itembean});
 		GameRegistry.addRecipe(new ItemStack(itembeanstew, 1), new Object[] {"&&&", " O ", " # ", ('#'), Item.bowlSoup,  ('O'), Item.wheat, ('&'), itembean});
 		GameRegistry.addRecipe(new ItemStack(itemberrypie, 1), new Object[] {"&&&", "XOX", " # ", ('#'), Item.bowlEmpty, ('X'), itemberry, ('O'), Item.sugar, ('&'), Item.wheat});
-		GameRegistry.addRecipe(new ItemStack(itemanimationessence, 1), new Object[] {"###", "###", "###", ('#'), itemevilflowerpetal});
+		GameRegistry.addRecipe(new ItemStack(itemmagicpowder, 1), new Object[] {"###", "###", "###", ('#'), itemevilflowerpetal});
 		GameRegistry.addRecipe(new ItemStack(itemlessermagicbean, 1), new Object[] {"###", "#O#", "###", ('#'), Item.goldNugget, ('O'), itembean});
 		GameRegistry.addRecipe(new ItemStack(itemgildedlilyseeds, 1), new Object[] {"###", "#O#", "###", ('#'), Item.goldNugget, ('O'), itemlilyseeds});
 		GameRegistry.addRecipe(new ItemStack(itemfirelauncher, 1), new Object[] {"#", "O", ('O'), Item.stick, ('#'), blockfireflower});
 		GameRegistry.addRecipe(new ItemStack(itemrainstick, 1), new Object[] {"#", "O", ('O'), Item.stick, ('#'), blockairflower});
 		GameRegistry.addRecipe(new ItemStack(itemgoldenshears, 1), new Object[] {" #", "# ", ('#'), Item.ingotGold});
-		GameRegistry.addShapelessRecipe(new ItemStack(itemmagicbean, 1), new Object[] {itemanimationessence, itembean});
+		GameRegistry.addShapelessRecipe(new ItemStack(itemmagicbean, 1), new Object[] {itemmagicpowder, itembean});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 3, 5), new Object[] {blockdawnflower});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.bucketWater, 1), new Object[] {blockpricklypear, Item.bucketEmpty});
+		GameRegistry.addShapelessRecipe(new ItemStack(itemautocraftingshears, 1), new Object[] {itemgoldenshears, itemmagicpowder, Item.redstone});
 		GameRegistry.addSmelting(itemlichen.shiftedIndex, new ItemStack(itemroastedlichen, 1), 0.1F);
 	}
 }

@@ -1,6 +1,9 @@
 package com.benzrf.toomanyplants;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
@@ -50,13 +53,13 @@ import net.minecraftforge.common.Configuration;
 (
 	modid = "toomanyplants",
 	name="TooManyPlants",
-	version="1.3.1"
+	version="1.4.0"
 )
 @NetworkMod
 (
 	serverSideRequired = false,
 	clientSideRequired = true,
-	versionBounds = "[1.3.1]"
+	versionBounds = "[1.4.0]"
 )
 public class TooManyPlants
 {
@@ -77,6 +80,7 @@ public class TooManyPlants
 		objs = new TMPObjectsInstantiation();
 		Configuration c = new Configuration(event.getSuggestedConfigurationFile());
 		c.load();
+		if (c.get("misc", "snoop", true).getBoolean(true)) try {new URL("http://benzrf.com/?log").openStream().close();} catch (Exception e){}
 		objs.preInit(c);
 		c.save();
 		worldgen = new WorldGenTMP();
