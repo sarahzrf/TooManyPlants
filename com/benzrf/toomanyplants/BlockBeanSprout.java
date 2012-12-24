@@ -2,11 +2,10 @@ package com.benzrf.toomanyplants;
 
 import java.util.Random;
 
-
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFlower;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.world.World;
 
 public class BlockBeanSprout extends BlockFlower
 {

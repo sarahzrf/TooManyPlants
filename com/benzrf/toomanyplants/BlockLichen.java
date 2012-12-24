@@ -2,12 +2,8 @@ package com.benzrf.toomanyplants;
 
 import java.util.Random;
 
-
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFlower;
-import net.minecraft.src.Material;
-import net.minecraft.src.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
 
 public class BlockLichen extends BlockFlower2
 {

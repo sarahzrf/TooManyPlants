@@ -1,10 +1,10 @@
 package com.benzrf.toomanyplants;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemFood;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.World;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 public class ItemBerryPie extends ItemFood
 {

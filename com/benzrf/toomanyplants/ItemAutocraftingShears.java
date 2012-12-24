@@ -1,26 +1,22 @@
 package com.benzrf.toomanyplants;
 
-import java.util.*;
-import java.util.Map.Entry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Side;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
-import net.minecraft.src.ChunkPosition;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityList;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemShears;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
-import net.minecraftforge.common.ForgeChunkManager;
+import net.minecraft.block.Block;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemShears;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.World;
 
 //import com.benzrf.toomanyplants.
 
@@ -156,6 +152,12 @@ class AutocraftingManager
 	
 	static
 	{
+		// baked potato
+		autocraftingRecipes.put(Item.bakedPotato.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.stoneOvenIdle.blockID, 0, 1, false),
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.coal.shiftedIndex, 0, 1, true),
+			new AutocraftingEntry(AET.BLOCK, Block.potato.blockID, 7, 1, true)
+		});
 		// bread
 		autocraftingRecipes.put(Item.bread.shiftedIndex, new AutocraftingEntry[] {
 			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
@@ -169,6 +171,26 @@ class AutocraftingManager
 			new AutocraftingEntry(AET.BLOCK, Block.reed.blockID, -1, 2, true),
 			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.egg.shiftedIndex, 0, 0, true),
 			new AutocraftingEntry(AET.BLOCK, Block.crops.blockID, 7, 3, true)
+		});
+		// cookie
+		autocraftingRecipes.put(Item.cookie.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
+			new AutocraftingEntry(AET.BLOCK, Block.crops.blockID, 7, 1, true),
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.dyePowder.shiftedIndex, 3, 1, true)
+		});
+		// mushroom stew
+		autocraftingRecipes.put(Item.bowlSoup.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.bowlEmpty.shiftedIndex, 0, 1, false),
+			new AutocraftingEntry(AET.BLOCK, Block.mushroomRed.blockID, -1, 1, true),
+			new AutocraftingEntry(AET.BLOCK, Block.mushroomBrown.blockID, -1, 1, true),
+		});
+		// pumkin pie
+		autocraftingRecipes.put(Item.pumpkinPie.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.egg.shiftedIndex, 0, 1, false),
+			new AutocraftingEntry(AET.BLOCK, Block.pumpkin.blockID, -1, 1, true),
+			new AutocraftingEntry(AET.BLOCK, Block.reed.blockID, -1, 1, true),
 		});
 	}
 }

@@ -2,13 +2,12 @@ package com.benzrf.toomanyplants;
 
 import java.util.Random;
 
-
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFlower;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 
 public class BlockBoneFinger extends BlockFlower
 {
@@ -39,7 +38,7 @@ public class BlockBoneFinger extends BlockFlower
 			{
 				l++;
 				world.setBlockMetadataWithNotify(i, j, k, l);
-				world.markBlocksDirty(i, j, k, i, j, k);
+				world.markBlockRangeForRenderUpdate(i, j, k, i, j, k);
 			}
 		}
 		super.updateTick(world, i, j, k, random);

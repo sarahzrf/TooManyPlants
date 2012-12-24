@@ -1,11 +1,8 @@
 package com.benzrf.toomanyplants;
 
-import java.util.Random;
-
-import net.minecraft.src.BlockFlower;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.World;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 
 public class BlockAirFlower extends BlockFlower2
 {

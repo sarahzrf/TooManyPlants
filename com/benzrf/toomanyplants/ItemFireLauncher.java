@@ -1,12 +1,10 @@
 package com.benzrf.toomanyplants;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Side;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntitySmallFireball;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemFireLauncher extends Item
 {

@@ -3,27 +3,25 @@ package com.benzrf.toomanyplants;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockNetherrack;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSeeds;
+import net.minecraft.item.ItemShears;
+import net.minecraft.item.ItemSoup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockNetherrack;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemFood;
-import net.minecraft.src.ItemSeeds;
-import net.minecraft.src.ItemShears;
-import net.minecraft.src.ItemSoup;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.World;
-import net.minecraftforge.common.Configuration;
 
 public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 {
@@ -228,30 +226,8 @@ public class TMPObjectsInstantiation extends TMPObjectsDeclaration
 			@Override
 			public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int l, float i2, float j2, float k2)
 			{
-				ItemStack itemstack = entityplayer.inventory.getCurrentItem();
-				if (itemstack == null)
-				{
-					return false;
-				}
-				if(itemstack.itemID == Item.glassBottle.shiftedIndex)
-				{
-					ItemStack itemstack1 = new ItemStack(Item.potion, 1, 0);
-					if(!entityplayer.inventory.addItemStackToInventory(itemstack1))
-					{
-						world.spawnEntityInWorld(new EntityItem(world, (double)i + 0.5D, (double)j + 1.5D, (double)k + 0.5D, itemstack1));
-					}
-					itemstack.stackSize--;
-					if(itemstack.stackSize <= 0)
-					{
-						entityplayer.inventory.setInventorySlotContents(entityplayer.inventory.currentItem, null);
-					}
-					else if (entityplayer instanceof EntityPlayerMP)
-					{
-						((EntityPlayerMP)entityplayer).sendContainerToPlayer(entityplayer.inventorySlots);
-					}
-					return true;
-				}
-				return false;
+				world.setBlockMetadata(i, j, k, 3);
+				return Block.cauldron.onBlockActivated(world, i, j, k, entityplayer, l, i2, j2, k2);
 			}
 		}.setBlockName("Pitcher Plant");
 	}

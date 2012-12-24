@@ -1,7 +1,7 @@
 package com.benzrf.toomanyplants;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 public class TMPObjectsDeclaration
 {

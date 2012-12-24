@@ -5,12 +5,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import cpw.mods.fml.client.FMLTextureFX;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.RenderEngine;
-import net.minecraft.src.TextureFX;
+import net.minecraft.client.renderer.RenderEngine;
 import net.minecraftforge.client.ForgeHooksClient;
+import cpw.mods.fml.client.FMLTextureFX;
 
 public class TextureDawnFlowerFX extends FMLTextureFX
 {

@@ -1,6 +1,6 @@
 package com.benzrf.toomanyplants;
 
-import net.minecraft.src.BlockFlower;
+import net.minecraft.block.BlockFlower;
 
 public class BlockDawnflower extends BlockFlower 
 {
