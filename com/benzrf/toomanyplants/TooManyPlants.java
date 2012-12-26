@@ -20,13 +20,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 (
 	modid = "toomanyplants",
 	name="TooManyPlants",
-	version="1.4.0"
+	version="1.5.0"
 )
 @NetworkMod
 (
 	serverSideRequired = false,
 	clientSideRequired = true,
-	versionBounds = "[1.4.0]"
+	versionBounds = "[1.5.0]"
 )
 public class TooManyPlants
 {
