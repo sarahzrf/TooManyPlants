@@ -194,12 +194,14 @@ class AutocraftingManager
 		});
 		// bean stew
 		autocraftingRecipes.put(TooManyPlants.objs.itembeanstew.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
 			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.bowlSoup.shiftedIndex, 0, 1, true),
 			new AutocraftingEntry(AET.BLOCK, TooManyPlants.objs.blockbeanplant.blockID, -1, 3, true),
 			new AutocraftingEntry(AET.BLOCK, Block.crops.blockID, 7, 1, true),
 		});
 		// berry pie
 		autocraftingRecipes.put(TooManyPlants.objs.itemberrypie.shiftedIndex, new AutocraftingEntry[] {
+			new AutocraftingEntry(AET.INVENTORY_ITEM, Block.workbench.blockID, 0, 1, false),
 			new AutocraftingEntry(AET.INVENTORY_ITEM, Item.bowlEmpty.shiftedIndex, 0, 1, true),
 			new AutocraftingEntry(AET.INVENTORY_ITEM, TooManyPlants.objs.itemberry.shiftedIndex, 0, 1, true),
 			new AutocraftingEntry(AET.BLOCK, Block.crops.blockID, 7, 3, true),
